@@ -33,6 +33,17 @@ function handleGetMovie(req, res) {
             movie.genre.includes(req.query.genre))
     }
 
+    if(req.query.country) {
+        response = response.filter(movie => 
+            movie.country.includes(req.query.country))
+    }
+
+    if(req.query.avg_vote) {
+        response = response.filter(movie => 
+            Number(movie.avg_vote) >= Number(req.query.avg_vote))
+    }
+
+
     res.json(response)
 }
 
